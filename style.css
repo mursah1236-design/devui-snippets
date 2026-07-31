@@ -3978,3 +3978,47 @@ padding:60px 20px;
 
 
 }
+/* ==========================
+   404 PAGE
+========================== */
+
+.error-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.error-container h1 {
+    font-size: 120px;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.error-container h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.error-container p {
+    max-width: 500px;
+    margin: 0 auto 30px;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.error-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.error-btn:hover {
+    background: var(--primary-hover);
+}
