@@ -278,24 +278,19 @@ backToTop:
 
 
 
-
 /* =====================================
    COPY BUTTON SYSTEM
 ===================================== */
-
 
 const copyButtons = document.querySelectorAll(".btn-code");
 
 
 copyButtons.forEach(button => {
 
-
 button.addEventListener("click", async ()=>{
 
 
-const code =
-codeSnippets[button.dataset.code];
-
+const code = codeSnippets[button.dataset.code];
 
 
 if(!code){
@@ -314,12 +309,33 @@ return;
 try{
 
 
+if(navigator.clipboard && window.isSecureContext){
+
 await navigator.clipboard.writeText(code);
 
+}
 
-button.textContent =
-"Copied ✓";
+else{
 
+
+const textarea = document.createElement("textarea");
+
+textarea.value = code;
+
+document.body.appendChild(textarea);
+
+textarea.select();
+
+document.execCommand("copy");
+
+textarea.remove();
+
+
+}
+
+
+
+button.textContent = "Copied ✓";
 
 button.classList.add("copied");
 
@@ -327,10 +343,7 @@ button.classList.add("copied");
 
 setTimeout(()=>{
 
-
-button.textContent =
-"Copy Code";
-
+button.textContent = "Copy Code";
 
 button.classList.remove("copied");
 
@@ -344,9 +357,21 @@ button.classList.remove("copied");
 catch(error){
 
 
-alert(
-"Copy failed. Please copy manually."
+console.error(
+"Copy failed:",
+error
 );
+
+
+button.textContent = "Failed";
+
+
+setTimeout(()=>{
+
+button.textContent="Copy Code";
+
+},2000);
+
 
 
 }
