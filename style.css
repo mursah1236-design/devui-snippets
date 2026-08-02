@@ -4684,3 +4684,20 @@ newsletter BOX FORM COMPONENT
     background:#1e293b;
 
 }
+/* Page ko screen se bahar jane se rokne ke liye */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Bahar nikle hue content ko hide kar dega */
+}
+
+/* Images aur Videos ko screen ke andar rakhne ke liye */
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Box sizing setup */
+* {
+  box-sizing: border-box;
+}
